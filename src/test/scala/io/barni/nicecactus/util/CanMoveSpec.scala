@@ -39,20 +39,20 @@ class CanMoveSpec extends WordSpec with Matchers {
       Barni.move.unsafeRun() shouldBe Scissors
     }
     "retry on invalid input" in {
-      val inputCounter = new AtomicInteger(-1)
+      val inputCounter = new AtomicInteger(0)
       val inputs: List[String] = List("q", "s")
 
       implicit val console: Console = new Console with NoOutput {
 
         override def getStrLn: IO[String] = {
           IO.unit({
-            val index = inputCounter.incrementAndGet()
+            val index = inputCounter.getAndIncrement()
             inputs(index)
           })
         }
       }
       CanMove[Human].move(Barni).unsafeRun() shouldBe Scissors
-      inputCounter.get() shouldBe 1
+      inputCounter.get() shouldBe 2
     }
   }
 
