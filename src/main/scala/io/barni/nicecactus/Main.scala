@@ -1,14 +1,14 @@
 package io.barni.nicecactus
 
 import io.barni.nicecactus.model.Player.Human
-import io.barni.nicecactus.service.{Console, Game, LiveConsole, LiveMoves, LiveRandom, LiveRound, Moves, Random}
+import io.barni.nicecactus.service.{ AppContext, Game, LiveConsole, LiveMoves, LiveRandom, LiveRound }
 
 object Main extends App {
 
-  implicit val console: LiveConsole with LiveRandom with LiveMoves with LiveRound = new LiveConsole with LiveRandom with LiveMoves with LiveRound
 
-  val barni = Human("Barni")
+  implicit val console: AppContext = new LiveConsole with LiveRandom with LiveMoves with LiveRound
+
   (for {
-    _ <- Game()
+    _ <- new Game().play
   } yield ()).unsafeRun()
 }

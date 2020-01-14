@@ -2,7 +2,7 @@ package io.barni.nicecactus.service
 
 import io.barni.nicecactus.model.Move
 
-import scala.util.{Random => Rand}
+import scala.util.{ Random => Rand }
 
 trait Random {
   def nextMove(moves: Moves): Move

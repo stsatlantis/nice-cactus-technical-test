@@ -4,10 +4,10 @@ import java.util.concurrent.atomic.AtomicInteger
 
 import io.barni.nicecactus.model.Move
 import io.barni.nicecactus.model.Move._
-import io.barni.nicecactus.model.Player.{Human, Robot}
-import io.barni.nicecactus.service.{Console, Moves, Output, Random}
+import io.barni.nicecactus.model.Player.{ Human, Robot }
+import io.barni.nicecactus.service.{ Console, Moves, Output, Random }
 import io.barni.nicecactus.util.CanMove.syntax._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{ Matchers, WordSpec }
 
 class CanMoveSpec extends WordSpec with Matchers {
   "Human moves based on input" should {
@@ -42,7 +42,7 @@ class CanMoveSpec extends WordSpec with Matchers {
       val inputCounter = new AtomicInteger(-1)
       val inputs: List[String] = List("q", "s")
 
-      implicit val console: Console = new Console with NoOutput{
+      implicit val console: Console = new Console with NoOutput {
 
         override def getStrLn: IO[String] = {
           IO.unit({

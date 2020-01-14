@@ -8,11 +8,11 @@ trait Parsable[T] {
 }
 
 object Parsable {
-  type ParseResult[T] = Either[String,T]
+  type ParseResult[T] = Either[String, T]
   def apply[T](implicit instance: Parsable[T]): Parsable[T] = instance
 
   def printInvalid[T](input: ParseResult[T])(implicit console: Output): Unit = input match {
-    case Left(input) => console.putStr(s"Invalid input ('$input') try again: ").unsafeRun()
-    case _: Right[String,T] => ()
+    case Left(input)         => console.putStr(s"Invalid input ('$input') try again: ").unsafeRun()
+    case _: Right[String, T] => ()
   }
 }

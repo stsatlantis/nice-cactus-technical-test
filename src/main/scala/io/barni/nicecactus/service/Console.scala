@@ -16,10 +16,10 @@ trait Output {
 trait Console extends Input with Output
 
 trait LiveConsole extends Console {
-  override def putStrLn(line: String): IO[Unit] = IO.unit(println(line))
-  override def putStr(line: String): IO[Unit] = IO.unit(print(line))
+  final def putStrLn(line: String): IO[Unit] = IO.unit(println(line))
+  final def putStr(line: String): IO[Unit] = IO.unit(print(line))
 
-  override def getStrLn: IO[String] = IO.unit(readLine())
+  final def getStrLn: IO[String] = IO.unit(readLine())
 }
 
 object LiveConsole extends LiveConsole

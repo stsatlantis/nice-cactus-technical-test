@@ -2,7 +2,7 @@ package io.barni.nicecactus.util
 
 import io.barni.nicecactus.model.Move
 import io.barni.nicecactus.model.Move._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{ Matchers, WordSpec }
 
 import scala.annotation.tailrec
 import scala.util.Random
@@ -16,14 +16,15 @@ class ParsableSpec extends WordSpec with Matchers {
   )
   val validInputs: List[String] = usesCases.values.flatten.toList
 
-  usesCases.foreach { case (result, inputs) =>
-    s"$result" should {
-      inputs.foreach { input =>
-        s"be parsed from $input" in {
-          Parsable[Move].parse(input) shouldBe Right(result)
+  usesCases.foreach {
+    case (result, inputs) =>
+      s"$result" should {
+        inputs.foreach { input =>
+          s"be parsed from $input" in {
+            Parsable[Move].parse(input) shouldBe Right(result)
+          }
         }
       }
-    }
   }
 
   "Parsing" should {
@@ -34,8 +35,7 @@ class ParsableSpec extends WordSpec with Matchers {
       val str: String = Random.alphanumeric.take(length).mkString("")
       if (validInputs.contains(str)) {
         generateRandomInvalidInput
-      }
-      else {
+      } else {
         str
       }
     }
@@ -48,4 +48,3 @@ class ParsableSpec extends WordSpec with Matchers {
   }
 
 }
-

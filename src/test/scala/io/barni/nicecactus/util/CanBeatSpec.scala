@@ -3,24 +3,24 @@ package io.barni.nicecactus.util
 import io.barni.nicecactus.model.Move
 import io.barni.nicecactus.model.Move._
 import io.barni.nicecactus.util.CanBeat.syntax._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.{ Matchers, WordSpec }
 
 class CanBeatSpec extends WordSpec with Matchers {
   "Scissors" should {
     "beat Paper" in {
-      beatsButNotBeaten(Scissors,Set(Paper))
+      beatsButNotBeaten(Scissors, Set(Paper))
     }
   }
 
   "Paper" should {
     "beat Rock" in {
-      beatsButNotBeaten(Paper,Set(Rock))
+      beatsButNotBeaten(Paper, Set(Rock))
     }
   }
 
   "Rock" should {
     "beat Scissors" in {
-      beatsButNotBeaten(Rock,Set(Scissors))
+      beatsButNotBeaten(Rock, Set(Scissors))
     }
   }
 

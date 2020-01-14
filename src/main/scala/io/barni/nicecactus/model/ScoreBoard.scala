@@ -32,7 +32,10 @@ object PlayerScore {
     Lens[PlayerScore, Player](_.player, (score, player) => score.copy(player = player))
 }
 
-final case class ScoreBoard(score1: PlayerScore, score2: PlayerScore, draws: ScoreValue)
+final case class ScoreBoard(
+    score1: PlayerScore,
+    score2: PlayerScore,
+    draws: ScoreValue)
 
 object ScoreBoard {
 
@@ -46,8 +49,8 @@ object ScoreBoard {
   private[this] val _boardPlayer2Lens: Lens[ScoreBoard, PlayerScore] =
     Lens[ScoreBoard, PlayerScore](_.score2, (b, s) => b.copy(score2 = s))
 
-  val boardPlayer1Lens:Lens[ScoreBoard, Player] = _boardPlayer1Lens compose PlayerScore.playerLens
-  val boardPlayer2Lens:Lens[ScoreBoard, Player] = _boardPlayer2Lens compose PlayerScore.playerLens
+  val boardPlayer1Lens: Lens[ScoreBoard, Player] = _boardPlayer1Lens compose PlayerScore.playerLens
+  val boardPlayer2Lens: Lens[ScoreBoard, Player] = _boardPlayer2Lens compose PlayerScore.playerLens
   val boardPlayer1ScoreLens: Lens[ScoreBoard, ScoreValue] = _boardPlayer1Lens compose PlayerScore.scoreLens
   val boardPlayer2ScoreLens: Lens[ScoreBoard, ScoreValue] = _boardPlayer2Lens compose PlayerScore.scoreLens
   val boardDrawScore: Lens[ScoreBoard, ScoreValue] = Lens[ScoreBoard, ScoreValue](_.draws, (b, s) => b.copy(draws = s))
